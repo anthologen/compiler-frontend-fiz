@@ -57,7 +57,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anthologen/compiler-frontend-fiz.git"
+    "url": "git+https://github.com/formulavize/compiler-frontend-fiz.git"
   },
   "author": "anthologen",
   "license": "MIT"

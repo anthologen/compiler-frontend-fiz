@@ -11,7 +11,7 @@ fiz source  →  [parser]      →  Lezer syntax tree
 ```
 
 Published as `@formulavize/compiler-frontend-fiz` and consumed by
-[editor-formulavize](https://github.com/anthologen/editor-formulavize).
+[editor-formulavize](https://github.com/formulavize/editor-formulavize).
 
 ## Usage
 
