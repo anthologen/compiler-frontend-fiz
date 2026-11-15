@@ -9,7 +9,7 @@ make a change that fits.
 `@formulavize/compiler-frontend-fiz` is the compiler frontend for the **fiz**
 DSL: source text to a normalized AST to a `Dag`. It is renderer-neutral and
 knows nothing about how a dag is drawn. Its main consumer is
-[editor-formulavize](https://github.com/anthologen/editor-formulavize); it was
+[editor-formulavize](https://github.com/formulavize/editor-formulavize); it was
 extracted from that repo with its history intact.
 
 Layout:
