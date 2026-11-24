@@ -1,4 +1,8 @@
 import { Position } from "./compilationErrors.js";
+import type { QualifiableIdentifier } from "./identifiers.js";
+
+// re-exported so this module stays the one-stop import for AST vocabulary
+export type { QualifiableIdentifier };
 
 export enum NodeType {
   Call,
@@ -206,8 +210,6 @@ export class AssignmentTreeNode extends BaseTreeNode {
     return this.rhs;
   }
 }
-
-export type QualifiableIdentifier = string[];
 
 export class StyleTagTreeNode extends BaseTreeNode {
   private qualifiableTagName: QualifiableIdentifier;

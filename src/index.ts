@@ -13,13 +13,9 @@ export * from "./dag.js";
 export * from "./dagFactory.js";
 export * from "./driver.js";
 export * from "./errorReporter.js";
+export * from "./identifiers.js";
 export * from "./importCacher.js";
 export * from "./importFetcher.js";
 export * from "./importUtility.js";
 export * from "./parser.js";
 export * from "./syntaxChecks.js";
-
-// ast.ts and dag.ts each declare their own `QualifiableIdentifier`
-// (both `string[]`), so a plain star export of the two is ambiguous.
-// The subpath exports keep them distinct; the barrel has to pick one.
-export type { QualifiableIdentifier } from "./ast.js";
