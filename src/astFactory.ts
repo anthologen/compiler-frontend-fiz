@@ -80,7 +80,7 @@ function getTextFromChild(childName: string, c: TreeCursor, t: Text): string {
     : "";
 }
 
-function getQualifiableIdentifer(
+function getQualifiableIdentifier(
   c: TreeCursor,
   t: Text,
 ): QualifiableIdentifier {
@@ -110,7 +110,7 @@ function getStyleTagNames(c: TreeCursor, t: Text): StyleTagTreeNode[] {
     .map(
       (styleTag) =>
         new StyleTagTreeNode(
-          getQualifiableIdentifer(styleTag.cursor(), t),
+          getQualifiableIdentifier(styleTag.cursor(), t),
           getPosition(styleTag.cursor()),
         ),
     );
@@ -216,7 +216,7 @@ function makeAboutNote(c: TreeCursor, t: Text, e: Error[]): AboutNoteTreeNode {
 }
 
 function makeRhsVariable(c: TreeCursor, t: Text): QualifiedVarTreeNode {
-  const varQualifiedIdent = getQualifiableIdentifer(c, t);
+  const varQualifiedIdent = getQualifiableIdentifier(c, t);
   return new QualifiedVarTreeNode(varQualifiedIdent, getPosition(c));
 }
 
