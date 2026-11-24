@@ -1,6 +1,7 @@
 import { match } from "ts-pattern";
 import { Text } from "@codemirror/state";
 import { DESCRIPTION_PROPERTY } from "./constants.js";
+import type { QualifiableIdentifier } from "./identifiers.js";
 import { Tree, TreeCursor } from "@lezer/common";
 import {
   RecipeTreeNode,
@@ -79,7 +80,10 @@ function getTextFromChild(childName: string, c: TreeCursor, t: Text): string {
     : "";
 }
 
-function getQualifiableIdentifer(c: TreeCursor, t: Text): string[] {
+function getQualifiableIdentifer(
+  c: TreeCursor,
+  t: Text,
+): QualifiableIdentifier {
   const candidateIdentifierList = c.node.getChild("QualifiableIdentifier");
   if (!candidateIdentifierList) return [];
   return candidateIdentifierList
