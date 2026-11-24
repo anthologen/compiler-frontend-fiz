@@ -1,8 +1,12 @@
+import type { QualifiableIdentifier } from "./identifiers.js";
+
+// re-exported so a renderer importing only "./dag" still sees it
+export type { QualifiableIdentifier };
+
 export type NodeId = string;
 export type EdgeId = string;
 export type DagId = string;
 export type ElementId = NodeId | EdgeId;
-export type QualifiableIdentifier = string[];
 export type StyleTag = QualifiableIdentifier;
 export type Keyword = string;
 export type StyleProperties = Map<string, string>;

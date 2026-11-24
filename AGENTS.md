@@ -76,6 +76,13 @@ fiz source code
   would say so) and `console.debug` otherwise (the recipe is wrong and the
   editor already shows it). Report sites pass a source, never a log level
 - **dag.ts** — `Dag` data structure with `DagNode`/`DagEdge`; supports nested DAGs for namespaces; parent-child lineage tracking
+- **identifiers.ts** — `QualifiableIdentifier`, a namespace-qualified name
+  split into segments (`Foo.bar` is `["Foo", "bar"]`). It sits in its own
+  module, below both layers, because `ast.ts` needs it for the names it parses
+  and `dag.ts` builds `StyleTag` on it, and `dag.ts` is otherwise free of
+  imports — a renderer consuming a `Dag` should not pull in the AST. Both
+  re-export it, so `/ast` and `/dag` remain one-stop imports; do not
+  re-declare it in either
 - **compilationErrors.ts** — `CompilationError`, `ErrorSource`, `ErrorCode`,
   `ImportError`, and `describeError`, the one place a value thrown by a
   non-compiler layer (a fetch, a file read) is turned into a message. Modules
@@ -167,6 +174,11 @@ because emitted JavaScript cannot carry a path alias.
 `src/index.ts` is a barrel re-exporting every module. Consumers may use it or
 the per-module subpath exports; the editor uses the subpaths. A new module in
 `src/` belongs in that barrel.
+
+Keep the barrel's `export *` list alphabetical. A name exported by two modules
+makes those star exports ambiguous (TS2308) — fix it by giving the type one
+declaration that both modules re-export, as `identifiers.ts` does, rather than
+by picking a winner in the barrel.
 
 ## Testing instructions
 

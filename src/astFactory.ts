@@ -1,6 +1,7 @@
 import { match } from "ts-pattern";
 import { Text } from "@codemirror/state";
 import { DESCRIPTION_PROPERTY } from "./constants.js";
+import type { QualifiableIdentifier } from "./identifiers.js";
 import { Tree, TreeCursor } from "@lezer/common";
 import {
   RecipeTreeNode,
@@ -79,7 +80,10 @@ function getTextFromChild(childName: string, c: TreeCursor, t: Text): string {
     : "";
 }
 
-function getQualifiableIdentifer(c: TreeCursor, t: Text): string[] {
+function getQualifiableIdentifier(
+  c: TreeCursor,
+  t: Text,
+): QualifiableIdentifier {
   const candidateIdentifierList = c.node.getChild("QualifiableIdentifier");
   if (!candidateIdentifierList) return [];
   return candidateIdentifierList
@@ -106,7 +110,7 @@ function getStyleTagNames(c: TreeCursor, t: Text): StyleTagTreeNode[] {
     .map(
       (styleTag) =>
         new StyleTagTreeNode(
-          getQualifiableIdentifer(styleTag.cursor(), t),
+          getQualifiableIdentifier(styleTag.cursor(), t),
           getPosition(styleTag.cursor()),
         ),
     );
@@ -212,7 +216,7 @@ function makeAboutNote(c: TreeCursor, t: Text, e: Error[]): AboutNoteTreeNode {
 }
 
 function makeRhsVariable(c: TreeCursor, t: Text): QualifiedVarTreeNode {
-  const varQualifiedIdent = getQualifiableIdentifer(c, t);
+  const varQualifiedIdent = getQualifiableIdentifier(c, t);
   return new QualifiedVarTreeNode(varQualifiedIdent, getPosition(c));
 }
 
