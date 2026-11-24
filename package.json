@@ -1,6 +1,6 @@
 {
   "name": "@formulavize/compiler-frontend-fiz",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Compiler frontend for the fiz language",
   "keywords": [
     "fiz",
